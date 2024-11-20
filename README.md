@@ -1,1 +1,5 @@
 # JavaScript
+<div align="center">
+   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="200" height="auto">
+</div>
+<p align="justify"> JavaScript is a high-level, dynamic programming language primarily used for building interactive and dynamic websites. Developed by Brendan Eich in 1995, JavaScript is an essential part of web development, enabling client-side scripting and providing functionality like form validation, animations, and real-time updates. It runs in web browsers and supports event-driven, functional, and imperative programming styles. JavaScript is known for its versatility and widespread use in both front-end and back-end development, especially with frameworks like React, Angular, and Node.js. It is a core technology of the web, often used alongside HTML and CSS to create responsive, user-friendly web applications. JavaScript’s vast ecosystem of libraries and tools continues to make it a popular and powerful choice for developers. </p>
