@@ -1,4 +1,4 @@
-import { BASE_LAYER, HAZE_MAX, HAZE_MIN, HAZE_OPACITY } from "../config/renderConfig.js"
+import { BASE_LAYER, HAZE_MAX, HAZE_MIN, HAZE_OPACITY } from "../galaxy/config/renderConfig.js"
 import { clamp } from "../utils.js"
 import * as THREE from 'three'
 

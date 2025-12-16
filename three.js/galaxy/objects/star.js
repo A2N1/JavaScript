@@ -1,6 +1,6 @@
 import * as THREE from 'three'
-import { BLOOM_LAYER, STAR_MAX, STAR_MIN } from '../config/renderConfig.js'
-import { starTypes } from '../config/starDistributions.js'
+import { BLOOM_LAYER, STAR_MAX, STAR_MIN } from '../galaxy/config/renderConfig.js'
+import { starTypes } from '../galaxy/config/starDistributions.js'
 import { clamp } from '../utils.js'
 
 const texture = new THREE.TextureLoader().load('../resources/sprite120.png')
