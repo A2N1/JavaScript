@@ -1,25 +1,25 @@
-# JavaScript Cheat Sheet – LERNVERSION 📘 (ES6+)
+# JavaScript Cheat Sheet – COMPLETE LEARNING VERSION 📘 (ES6+)
 
-Diese Version erklärt **WARUM** und **WIE** Dinge funktionieren.  
-Geeignet für Einsteiger & Auffrischer (Browser & Node.js).
+This cheat sheet explains **WHY** and **HOW** things work.  
+Suitable for beginners and refreshers (Browser & Node.js).
 
 ---
 
-## Inhaltsverzeichnis
+## Table of Contents
 
-- [JavaScript Cheat Sheet – LERNVERSION 📘 (ES6+)](#javascript-cheat-sheet--lernversion--es6)
-  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
-  - [1. Grundlagen](#1-grundlagen)
-  - [2. Variablen \& Datentypen](#2-variablen--datentypen)
-  - [3. Operatoren](#3-operatoren)
-  - [4. Kontrollstrukturen](#4-kontrollstrukturen)
-  - [5. Funktionen](#5-funktionen)
+- [JavaScript Cheat Sheet – COMPLETE LEARNING VERSION 📘 (ES6+)](#javascript-cheat-sheet--complete-learning-version--es6)
+  - [Table of Contents](#table-of-contents)
+  - [1. Basics](#1-basics)
+  - [2. Variables \& Data Types](#2-variables--data-types)
+  - [3. Operators](#3-operators)
+  - [4. Control Structures](#4-control-structures)
+  - [5. Functions](#5-functions)
   - [6. Arrays](#6-arrays)
-  - [7. Objekte](#7-objekte)
-  - [8. Klassen](#8-klassen)
-  - [9. Module (ESM)](#9-module-esm)
-  - [10. Asynchrones JavaScript](#10-asynchrones-javascript)
-  - [11. Fehlerbehandlung](#11-fehlerbehandlung)
+  - [7. Objects](#7-objects)
+  - [8. Classes](#8-classes)
+  - [9. Modules (ESM)](#9-modules-esm)
+  - [10. Asynchronous JavaScript](#10-asynchronous-javascript)
+  - [11. Error Handling](#11-error-handling)
   - [12. Scope \& Closures](#12-scope--closures)
   - [13. this](#13-this)
   - [14. DOM Manipulation (Browser)](#14-dom-manipulation-browser)
@@ -27,171 +27,162 @@ Geeignet für Einsteiger & Auffrischer (Browser & Node.js).
   - [16. Browser APIs](#16-browser-apis)
   - [17. Storage](#17-storage)
   - [18. JSON](#18-json)
-  - [19. Reguläre Ausdrücke](#19-reguläre-ausdrücke)
-  - [20. Moderne Features](#20-moderne-features)
+  - [19. Regular Expressions](#19-regular-expressions)
+  - [20. Modern Features](#20-modern-features)
   - [21. Best Practices](#21-best-practices)
-  - [Ende](#ende)
+  - [End](#end)
 
 ---
 
-## 1. Grundlagen
+## 1. Basics
 
 ~~~javascript
-// JavaScript ist single-threaded und event-basiert
-// Code wird von oben nach unten ausgeführt
+// Single-threaded, event-driven
+// Code executes top to bottom
 
-// Einzeiliger Kommentar
-/* Mehrzeiliger Kommentar */
+// Comments
+// single-line
+/* multi-line */
 
+// Console output
 console.log("Hello World");
+
+// Template literals
+const name = "Max";
+console.log(`Hello ${name}`); // "Hello Max"
+
+// Debugger
+// debugger; // pause execution in dev tools
 ~~~
 
 ---
 
-## 2. Variablen & Datentypen
+## 2. Variables & Data Types
 
 ~~~javascript
-// var → veraltet, function-scoped
-var old = 1;
+var old = 1; // outdated, function-scoped
 old = 2;
-console.log(old); // 2
-~~~
 
-~~~javascript
-// let → veränderbar, block-scoped
-let person = "Nick";
+let person = "Nick"; // block-scoped, reassignable
 person = "John";
-console.log(person); // "John"
-~~~
 
-~~~javascript
-// const → keine Neuzuweisung erlaubt
-const pi = 3.14;
-// pi = 3.15 ❌ Fehler
-~~~
+const pi = 3.14; // cannot be reassigned
 
-~~~javascript
-// Primitive Datentypen
-const text = "Hallo";     // string
-const age = 30;           // number
-const active = true;      // boolean
-const nothing = null;     // null
-let undef;                // undefined
-~~~
+// Primitives
+const text = "Hello"; // string
+const age = 30;       // number
+const active = true;  // boolean
+const nothing = null; // null
+let undef;            // undefined
+const id = Symbol("id"); // symbol
+const big = 123n;        // bigint
 
-~~~javascript
-typeof "abc";   // "string"
-typeof 123;     // "number"
-typeof null;    // "object" (JS-Bug)
+// Type checking
+console.log(typeof text); // "string"
+console.log(typeof null); // "object" (JS quirk)
 ~~~
 
 ---
 
-## 3. Operatoren
+## 3. Operators
 
 ~~~javascript
-1 == "1";   // true (lose Gleichheit)
-1 === "1";  // false (strikte Gleichheit)
-5 != "5";   // false
-5 !== "5";  // true
-~~~
+// Arithmetic
+5 + 3;  // 8
+5 - 3;  // 2
+5 * 3;  // 15
+5 / 2;  // 2.5
+5 % 2;  // 1
+2 ** 3; // 8
 
-~~~javascript
+// Comparison
+1 == "1";  // true (loose)
+1 === "1"; // false (strict)
+5 != "5";  // false
+5 !== "5"; // true
+
+// Logical
 true && false; // false
 true || false; // true
 !true;         // false
-~~~
 
-~~~javascript
-const age = 18;
+// Ternary
 const status = age >= 18 ? "adult" : "minor";
-~~~
 
-~~~javascript
+// Nullish coalescing
 const value = null;
-const result = value ?? "Default"; // Nullish Coalescing
-~~~
+const result = value ?? "Default";
 
-~~~javascript
+// Boolean cast
 !!"text"; // true
 !!0;      // false
 ~~~
 
 ---
 
-## 4. Kontrollstrukturen
+## 4. Control Structures
 
 ~~~javascript
+// if / else
 let score = 85;
 let grade;
 
-if (score > 90) {
+if(score > 90) {
   grade = "A";
-} else if (score > 80) {
+} else if(score > 80) {
   grade = "B";
 } else {
   grade = "C";
 }
-console.log(grade); // "B"
-~~~
 
-~~~javascript
-switch (role) {
+// switch
+const role = "admin";
+switch(role){
   case "admin":
     console.log("Admin");
     break;
   default:
     console.log("User");
 }
-~~~
 
-~~~javascript
-for (let i = 0; i < 3; i++) {
-  console.log(i);
-}
+// loops
+for(let i=0;i<3;i++) console.log(i);
 
 let i = 0;
-while (i < 3) {
+while(i<3) {
   console.log(i);
   i++;
 }
 
 do {
-  console.log("executed at least once");
+  console.log("Executed at least once");
 } while(false);
+
+// Iteration
+const arr = [10,20,30];
+for(const value of arr) console.log(value); // values
+for(const key in arr) console.log(key);    // indexes
 ~~~
 
 ---
 
-## 5. Funktionen
+## 5. Functions
 
 ~~~javascript
-// normale Funktion
-function add(a, b) {
-  return a + b;
-}
-console.log(add(2,3)); // 5
-~~~
+// Normal function
+function add(a,b) { return a+b; }
 
-~~~javascript
-// Arrow Function
-const addArrow = (a, b) => a + b;
-console.log(addArrow(2,3)); // 5
-~~~
+// Arrow function
+const addArrow = (a,b) => a+b;
 
-~~~javascript
-// Arrow ohne {}
-const square = x => x * x;
-console.log(square(5)); // 25
-~~~
+// Arrow without {}
+const square = x => x*x;
 
-~~~javascript
-// Default Parameter
-function greet(name = "Gast") {
-  return `Hallo ${name}`;
-}
-console.log(greet());      // "Hallo Gast"
-console.log(greet("Max")); // "Hallo Max"
+// Default parameters
+function greet(name="Guest"){ return `Hello ${name}`; }
+
+// Rest parameters
+function sum(...numbers){ return numbers.reduce((a,b)=>a+b,0); }
 ~~~
 
 ---
@@ -199,85 +190,88 @@ console.log(greet("Max")); // "Hallo Max"
 ## 6. Arrays
 
 ~~~javascript
-const numbers = [1, 2, 3];
+const numbers = [1,2,3];
+
+// Adding/removing
 numbers.push(4);
 numbers.pop();
-console.log(numbers); // [1,2,3]
-~~~
+numbers.shift();
+numbers.unshift(0);
 
-~~~javascript
-numbers.map(n => n * 2);       // [2,4,6]
-numbers.filter(n => n > 1);    // [2,3]
-numbers.reduce((a,b) => a+b, 0); // 6
-numbers.find(n => n===2);      // 2
-numbers.includes(3);           // true
-~~~
+// Iteration (functional)
+numbers.map(n=>n*2);
+numbers.filter(n=>n>1);
+numbers.reduce((a,b)=>a+b,0);
+numbers.find(n=>n===2);
+numbers.includes(3);
 
-~~~javascript
+// Copy
 const copy = [...numbers];
-console.log(copy); // [1,2,3]
+
+// Other useful
+numbers.slice(1,3);
+numbers.splice(1,2); // remove
+numbers.sort((a,b)=>b-a);
 ~~~
 
 ---
 
-## 7. Objekte
+## 7. Objects
 
 ~~~javascript
 const user = {
   name: "Max",
   age: 30,
-  greet() {
-    console.log(this.name);
-  }
+  greet() { console.log(this.name); }
 };
 
-user.name;      // "Max"
-user["age"];    // 30
+// Access
+user.name;
+user["age"];
 
+// Destructuring
 const { name, age } = user;
-console.log(name, age); // "Max" 30
 
+// Copy
 const user2 = { ...user };
+
+// Keys, Values, Entries
+Object.keys(user);   // ["name","age","greet"]
+Object.values(user); // ["Max",30, f]
+Object.entries(user); // [["name","Max"],...]
 ~~~
 
 ---
 
-## 8. Klassen
+## 8. Classes
 
 ~~~javascript
 class Person {
-  constructor(name) {
-    this.name = name;
-  }
-  greet() {
-    console.log(this.name);
-  }
+  constructor(name){ this.name = name; }
+  greet(){ console.log(this.name); }
 }
 
-const p = new Person("Max");
-p.greet(); // "Max"
-~~~
-
-~~~javascript
 class Student extends Person {
-  study() {
-    console.log("Studying");
+  constructor(name, course){
+    super(name); // call parent constructor
+    this.course = course;
   }
+  study(){ console.log("Studying " + this.course); }
 }
 
-const s = new Student("Anna");
-s.greet(); // "Anna"
-s.study(); // "Studying"
+const s = new Student("Anna","JS");
+s.greet();
+s.study();
 ~~~
 
 ---
 
-## 9. Module (ESM)
+## 9. Modules (ESM)
 
 ~~~javascript
 // export
 export const value = 42;
-export default function main() {}
+export default function main(){}
 
 // import
 import main, { value } from "./file.js";
@@ -285,44 +279,43 @@ import main, { value } from "./file.js";
 
 ---
 
-## 10. Asynchrones JavaScript
+## 10. Asynchronous JavaScript
 
 ~~~javascript
-setTimeout(() => {
-  console.log("Später");
-}, 1000);
-~~~
+// callback
+setTimeout(()=>console.log("Later"),1000);
 
-~~~javascript
+// Promise
 fetch("/api")
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(err => console.error(err));
-~~~
+.then(res=>res.json())
+.then(data=>console.log(data))
+.catch(err=>console.error(err));
 
-~~~javascript
-async function loadData() {
-  try {
+// async / await
+async function loadData(){
+  try{
     const res = await fetch("/api");
     const data = await res.json();
     return data;
-  } catch(e) {
-    console.error(e);
-  }
+  }catch(e){ console.error(e); }
 }
+
+// Multiple promises
+Promise.all([fetch("/a"), fetch("/b")])
+.then(([a,b])=>console.log(a,b));
 ~~~
 
 ---
 
-## 11. Fehlerbehandlung
+## 11. Error Handling
 
 ~~~javascript
-try {
-  throw new Error("Fehler!");
-} catch(e) {
+try{
+  throw new Error("Something went wrong");
+}catch(e){
   console.error(e.message);
-} finally {
-  console.log("Done");
+}finally{
+  console.log("Always executed");
 }
 ~~~
 
@@ -331,15 +324,12 @@ try {
 ## 12. Scope & Closures
 
 ~~~javascript
-function outer() {
+function outer(){
   let secret = 42;
-  return function inner() {
-    return secret;
-  };
+  return function inner(){ return secret; };
 }
-
 const fn = outer();
-console.log(fn()); // 42
+fn(); // 42
 ~~~
 
 ---
@@ -348,15 +338,10 @@ console.log(fn()); // 42
 
 ~~~javascript
 const obj = {
-  value: 10,
-  normal() {
-    console.log(this.value);
-  },
-  arrow: () => {
-    console.log(this.value);
-  }
+  value:10,
+  normal(){ console.log(this.value); },
+  arrow:()=>console.log(this.value)
 };
-
 obj.normal(); // 10
 obj.arrow();  // undefined
 ~~~
@@ -379,9 +364,7 @@ element.classList.add("active");
 ## 15. Events
 
 ~~~javascript
-button.addEventListener("click", event => {
-  event.preventDefault();
-});
+button.addEventListener("click", e => e.preventDefault());
 ~~~
 
 ---
@@ -399,10 +382,10 @@ window.history.back();
 ## 17. Storage
 
 ~~~javascript
-localStorage.setItem("key", "value");
+localStorage.setItem("key","value");
 localStorage.getItem("key");
 
-sessionStorage.setItem("key", "value");
+sessionStorage.setItem("key","value");
 ~~~
 
 ---
@@ -416,27 +399,29 @@ const objBack = JSON.parse(json);
 
 ---
 
-## 19. Reguläre Ausdrücke
+## 19. Regular Expressions
 
 ~~~javascript
 const emailRegex = /^\S+@\S+\.\S+$/;
-emailRegex.test("test@test.de"); // true
+emailRegex.test("test@test.com"); // true
 ~~~
 
 ---
 
-## 20. Moderne Features
+## 20. Modern Features
 
 ~~~javascript
+// Optional chaining
 obj?.prop;
 obj?.method?.();
-~~~
 
-~~~javascript
+// Sets & Maps
 const unique = [...new Set([1,1,2])];
-~~~
+const map = new Map([["a",1],["b",2]]);
+const weakMap = new WeakMap();
+const weakSet = new WeakSet();
 
-~~~javascript
+// Deep copy
 structuredClone(user);
 ~~~
 
@@ -444,14 +429,14 @@ structuredClone(user);
 
 ## 21. Best Practices
 
-- const vor let
-- === statt ==
-- kleine, reine Funktionen
-- Immutability bevorzugen
-- async/await statt Callbacks
-- kein globaler Scope
-- Lesbarkeit > Cleverness
+- use `const` before `let`
+- use `===` instead of `==`
+- small, pure functions
+- prefer immutability
+- prefer async/await over callbacks
+- avoid global scope
+- readability > cleverness
 
 ---
 
-## Ende
+## End
